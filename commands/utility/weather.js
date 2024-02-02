@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const { fetchWeatherApi } = require('openmeteo');
 require("dotenv").config();
 
@@ -59,7 +59,24 @@ module.exports = {
               };
       
               const currentTemperature = Math.round(weatherData.current.temperature2m.toFixed(1));
-              interaction.reply(`Temperature in city ${cityForPrint} is ${currentTemperature}°C`);
+
+              const temperatureEmbed = new EmbedBuilder().setTitle(`Temperature in city ${cityForPrint} is ${currentTemperature}°C`);
+
+              if (currentTemperature <= -20) {
+                temperatureEmbed.setColor("Purple");
+              }else if (currentTemperature<= -5 && currentTemperature > -20) {
+                temperatureEmbed.setColor("Blue");
+              } else if (currentTemperature <= 5 && currentTemperature > -5) {
+                temperatureEmbed.setColor("White");
+              } else if (currentTemperature <=20 && currentTemperature > 5) {
+                temperatureEmbed.setColor("Yellow");
+              } else if (currentTemperature > 20) {
+                temperatureEmbed.setColor("Red");
+              }
+
+
+              console.log(currentTemperature);
+              interaction.reply({embeds: [temperatureEmbed] });
           
             })
             .catch((error) => {

@@ -22,7 +22,7 @@ It utilizes geocoding API to translate the city name to coordinates and then use
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/nikkk1912/discord-weather-bot.git
+   git clone https://github.com/Nikkk1912/discord-weather-bot/tree/main
    ```
 
 2. **Install dependencies:**

@@ -1,0 +1,6 @@
+node_modules
+.json
+.eslintrc
+test.js
+test1.js
+.env
